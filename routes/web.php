@@ -21,7 +21,9 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
-Route::get('/chat', Index::class)->name('chat.index');/* index */
+Route::middleware('auth')->group(function(){
+    Route::get('/chat', Index::class)->name('chat.index');/* index */
 Route::get('/chat/{id}', Chat::class)->name('chat');/* menssage for chat */
 
 Route::get('/contacts', Users::class)->name('contacts');/* all contacts or user registers in the system */
+});

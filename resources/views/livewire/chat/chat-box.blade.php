@@ -10,7 +10,7 @@
                 <div class="shrink-0">
                     <x-avatar class="h-9 w-9 lg:w-11 lg:h-11" alt="User Avatar"></x-avatar>
                 </div>
-                <h6 class="font-bold truncate">name user</h6>
+                <h6 class="font-bold truncate">{{ $selectedConversation->getReceiver()->email }}</h6>
             </div>
         </header>
 
@@ -57,12 +57,12 @@
         {{-- part write menssage and btn send sms --}}
         <footer class="shrink-0 z-10 bg-white inset-x-0">
             <div class="p-2 border-t">
-                <form method="post" autocapitalize="off">
+                <form x-data="{ body: @entangle('body') }" @submit.prevent="$wire.sendMessage" method="post" autocapitalize="off">
                     @csrf
                     <input type="hidden" autocomplete="false" style="display: none">
                     <div class="grid grid-cols-12">
-                        <input type="text" autocomplete="off" autofocus placeholder="Escribe un mensaje"
-                            maxlength="2000"
+                        <input x-model="body" type="text" autocomplete="off" autofocus
+                            placeholder="Escribe un mensaje" maxlength="2000"
                             class="col-span-10 bg-gray-100 border-0 outline-0 focus:border-0 focus:ring-0 hover:ring-0 rounded-lg focus:outline-none">
 
                         <button class="col-span-2" type="submit">Enviar</button>

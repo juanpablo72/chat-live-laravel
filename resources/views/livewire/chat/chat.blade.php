@@ -4,11 +4,11 @@
 
 
     <div class="relative w-full md:w-[320px] xl:w-[400px] overflow-y-auto shrink-0 h-full border ">
-        <livewire:chat.chat-list />
+        <livewire:chat.chat-list :selectedConversation="$selectedConversation" :id="$id" />
     </div>
 
     <div class=" hidden md:grid w-full border-l h-full relative overflow-y-auto" style="contain: content">
-        <livewire:chat.chat-box />
+        <livewire:chat.chat-box :selectedConversation="$selectedConversation" :id="$id" />
         {{--  <div class="m-auto text-center justify-center flex felx flex-col gap-3">
           
         </div> --}}

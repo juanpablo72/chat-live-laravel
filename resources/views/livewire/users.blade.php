@@ -11,7 +11,7 @@
                     <h5>{{ $contact->name }}</h5>
                     <span class="text-sm text-gray-500">{{ $contact->email }}</span>
                     <div class="flex mt-4 space-x-3 md:mt-6 mb-4">
-                        <x-primary-button>
+                        <x-primary-button wire:click="menssage({{ $contact->id }})">
                             chatear
                         </x-primary-button>
                     </div>
