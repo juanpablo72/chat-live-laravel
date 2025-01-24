@@ -5,7 +5,7 @@
         <header class="w-full sticky inset-x-0 flex pb-[5px] pt-[5px] top-0 z-10 bg-white border-b">
             <div class="flex w-full items-center px-2 lg:px-4 gap-2 md:gap-5">
                 <a href="#" class="shrink-0 lg:hidden">
-                    image
+                    {{--       image --}}
                 </a>
                 <div class="shrink-0">
                     <x-avatar class="h-9 w-9 lg:w-11 lg:h-11" alt="User Avatar"></x-avatar>
