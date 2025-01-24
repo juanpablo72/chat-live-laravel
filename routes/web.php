@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Livewire\Chat\Chat;
 use App\Livewire\Chat\Index;
+use App\Livewire\Users;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -23,3 +24,4 @@ require __DIR__ . '/auth.php';
 Route::get('/chat', Index::class)->name('chat.index');/* index */
 Route::get('/chat/{id}', Chat::class)->name('chat');/* menssage for chat */
 
+Route::get('/contacts', Users::class)->name('contacts');/* all contacts or user registers in the system */
