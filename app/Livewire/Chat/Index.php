@@ -10,7 +10,7 @@ class Index extends Component
     {
         return view('livewire.chat.index');
     } */
-    public $body;
+    
    public $selectedConversation;
     public function render()
     {
