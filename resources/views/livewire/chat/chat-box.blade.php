@@ -36,6 +36,27 @@ Echo.private('users.{{ Auth()->User()->id }}')
 
         {{-- section menssage --}}
         <main
+            @scroll="
+      scropTop = $el.scrollTop;
+
+      if(scropTop <= 0){
+
+        window.livewire.emit('loadMore');
+
+      }
+     
+     "
+            @update-chat-height.window="
+
+         newHeight= $el.scrollHeight;
+
+         oldHeight= height;
+         $el.scrollTop= newHeight- oldHeight;
+
+         height=newHeight;
+     
+     "
+            id="conversation"
             class="flex flex-col gap-3 p-3 p-2.5 overflow-y-auto flex-grow overscroll-contain w-full my-auto overflow-x-hidden">
             @if ($loadedMenssages)
                 @php
@@ -124,14 +145,14 @@ Echo.private('users.{{ Auth()->User()->id }}')
 
             <div class=" p-2 border-t">
 
-                <form x-data="{ body: @entangle('body') }" @submit.prevent="$wire.sendMessage" method="POST" autocapitalize="off">
+                <form x-data="{ body: @entangle('body').defer }" @submit.prevent="$wire.sendMessage" method="POST" autocapitalize="off">
                     @csrf
 
                     <input type="hidden" autocomplete="false" style="display:none">
 
                     <div class="grid grid-cols-12">
-                        <input wire:model="body" type="text" autocomplete="off" autofocus
-                            placeholder="Escribe un mensaje" maxlength="1700"
+                        <input wire:model="body" type="text" autocomplete="off" autofocus placeholder="Escribe un"
+                            maxlength="1700"
                             class="col-span-10 bg-gray-100 border-0 outline-0 focus:border-0 focus:ring-0 hover:ring-0 rounded-lg  focus:outline-none">
 
                         <button
