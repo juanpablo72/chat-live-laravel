@@ -8,8 +8,8 @@ $nextTick(() => conversationElement.scrollTop = height);
 
 Echo.private('users.{{ Auth()->User()->id }}')
     .notification((notification) => {
-        if (notification['type'] == 'App\\Notifications\\MessageRead' && notification['conversation_id'] == {{ $this->selectedConversation->id }}) {
-
+        if (notification['type'] == 'App\\Notifications\\MenssageRead' && notification['conversation_id'] == {{ $this->selectedConversation->id }}) {
+            {{-- alert('Mensage leido'); --}}
             markAsRead = true;
         }
     });"
@@ -70,7 +70,7 @@ Echo.private('users.{{ Auth()->User()->id }}')
                             $previousMessage = $loadedMenssages->get($key - 1);
                         @endphp
                     @endif
-                    <div @class([
+                    <div wire:key="{{ time() . $key }}" @class([
                         'max-w-[85%] md:max-w-[78%] flex w-auto gap-2 relative mt-2',
                         'ml-auto' => $menssage->sender_id === auth()->id(),
                     ])>
@@ -105,11 +105,10 @@ Echo.private('users.{{ Auth()->User()->id }}')
                                     {{ $menssage->created_at->format('g:i a') }}
                                 </p>
                                 @if ($menssage->sender_id === auth()->id())
-                                    <div>
-                                        {{-- icon check send and seen menssage --}}
-                                        {{-- two check --}}
+                                    <div x-data="{ markAsRead: @json($menssage->isRead()) }">
+                                        {{--    // double icon check --}}
                                         @if ($menssage->isRead())
-                                            <span @class('text-gray-500')>
+                                            <span x-cloak x-show="markAsRead" @class('text-gray-500')>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                     fill="currentColor" class="bi bi-check2-all" viewBox="0 0 16 16">
                                                     <path
@@ -120,7 +119,7 @@ Echo.private('users.{{ Auth()->User()->id }}')
                                             </span>
                                         @else
                                             {{--  single icon check --}}
-                                            <span @class('text-gray-500')>
+                                            <span x-show="!markAsRead" @class('text-gray-500')>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                     fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
                                                     <path

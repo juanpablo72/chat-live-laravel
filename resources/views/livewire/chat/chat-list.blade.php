@@ -8,7 +8,14 @@
 
     }
 
-}), 200;" class="flex flex-col transition-all h-full overflow-hidden">
+}), 200;
+Echo.private('users.{{ Auth()->User()->id }}')
+    .notification((notification) => {
+        if (notification['type'] == 'App\\Notifications\\MenssageRead' || notification['type'] == 'App\\Notifications\\MessageSent') {
+            alert('Mensage leido');
+            window.Livewire.dispatch('refresh');
+        }
+    });" class="flex flex-col transition-all h-full overflow-hidden">
     <header class="px-3 z-10 bg-white sticky w-full py-2">
         <div class="border-b justify-between flex items-center pb-2">
             <div class="flex items-center gap-2">
