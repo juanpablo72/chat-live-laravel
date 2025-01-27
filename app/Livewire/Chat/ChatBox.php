@@ -22,7 +22,7 @@ class ChatBox extends Component
         ];
     }
 
-
+#notification broadcasted
     public function broadcastedNotifications($event){
         if($event['type']==MessageSent::class){
             $this->loadedMenssage();
@@ -43,14 +43,17 @@ class ChatBox extends Component
     }
 
     public function loadedMenssage(){
+        #sherch for all menssages in the selected conversation
         $this->loadedMenssages=Menssage::where('conversation_id',$this->selectedConversation->id)->get();
     }
 
     public function mount(){
         $this->loadedMenssage();
     }
+
+
     public function sendMessage(){
-        
+        #validation mensage  
         $this->validate(['body'=>'required|string']);
         $createdMenssage=Menssage::create(
        [

@@ -1,6 +1,6 @@
 # 🏗️ **Chat live Using laravel and livewire**
 
-Aplicacion de chat tiempo real utilizando laravel , livewire y pusher
+Aplicacion de chat tiempo real utilizando laravel , livewire y pusher alpine.js
 
 ## 💈 requisitos🏗️ 💈
 
@@ -11,7 +11,7 @@ Composer , postgresql ,node.js
 ![LARAVEL 11](https://img.shields.io/badge/laravel-%23323330.svg?style=for-the-badge&logo=laravel&logoColor=%23F7DF1E)
 ![livewire](https://img.shields.io/badge/livewire-007ACC?style=for-the-badge&logo=livewire&logoColor=yellow)
 ![tailwind](https://img.shields.io/badge/tailwind-76448A?style=for-the-badge&logo=tailwind&logoColor=white)
-Laravel 11 ,livewire, tailwind ,pusher, postgresql
+Laravel 11 ,livewire, tailwind,alpine.js ,pusher, postgresql
 
 ## 🚀 **Instalacion**
 
@@ -60,10 +60,10 @@ BROADCAST_CONNECTION=pusher
 
 ```
 
-# 💾 correr migraciones
+# 💾 correr migraciones y seeders
 
 ```bash
-php artisan make migrate
+php artisan make migrate --seed
 ```
 
 # 🎞️ archivos necesarios para livewire
@@ -93,4 +93,16 @@ npm run dev
 
 ```bash
 php artisan queue:work
+```
+
+```bash
+##LISTO  PROYECTO EN http://localhost:8000/
+```
+
+```bash
+#http://localhost:8000/contacts  //usuarios registrados en el sistema en que se pueden chatear
+```
+
+```bash
+#http://localhost:8000/chat/ chat del usuario logeado
 ```
